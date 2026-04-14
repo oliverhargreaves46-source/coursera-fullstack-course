@@ -22,7 +22,6 @@ var menuItemsUrl =
 var menuItemsTitleHtml = "snippets/menu-items-title.html";
 var menuItemHtml = "snippets/menu-item.html";
 
-// Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
   var targetElem = document.querySelector(selector);
   targetElem.innerHTML = html;
@@ -40,11 +39,6 @@ var insertProperty = function (string, propName, propValue) {
     .replace(new RegExp(propToReplace, "g"), propValue);
   return string;
 };
-
-  function chooseRandomCategory(categoriesArray) {
-  var randomIndex = Math.floor(Math.random() * categoriesArray.length);
-  return categoriesArray[randomIndex];
-}
 
   
 var switchMenuToActive = function () {
@@ -69,7 +63,6 @@ $ajaxUtils.sendGetRequest(
 showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
   allCategoriesUrl,
-  [...], 
   true);
 });
 
@@ -104,8 +97,6 @@ dc.loadMenuItems = function (categoryShort) {
     menuItemsUrl + categoryShort + ".json",
     buildAndShowMenuItemsHTML);
 };
-
-
 
 function buildAndShowCategoriesHTML (categories) {
   $ajaxUtils.sendGetRequest(
